@@ -389,7 +389,7 @@ $('#fontdown').click(function(){
     if(app.fontsize<=13) app.fontsize=13;
     $('#time-count,#star-count,#fuel-count, #bxh').css({fontSize: app.fontsize});
 })
-// thiết lập bảng xếp hạng
+// thiết lập bảng xếp hạng.....
 $('#continue').click(function(){
     var name=$('#name').val(),
         data=JSON.parse(localStorage.getItem('bxh'));
