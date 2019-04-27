@@ -298,7 +298,7 @@ $(document).ready(function(){
         modal:true,
         width:500,
         show:{
-            effect:'blind',
+            effect:'show',
             duration:1000
         }
     });
@@ -332,6 +332,18 @@ $(window).keydown(function(e){
     if(app.p==1) return;
     if(app.paused==0){
         if(e.which==80){
+            app.paused=1;
+            $('#paused').css({backgroundImage:"url(images/btn-play.png)"});
+            StopGame();
+        }
+    }else if(e.which==80){
+        app.paused=0;
+        $('#paused').css({backgroundImage:"url(images/btn-paused.png)"});
+        PlayGame();
+    }
+
+    if(app.paused==0){
+        if(e.which==32){
             app.paused=1;
             $('#paused').css({backgroundImage:"url(images/btn-play.png)"});
             StopGame();
@@ -379,44 +391,43 @@ $('#fontdown').click(function(){
 })
 // thiết lập bảng xếp hạng
 $('#continue').click(function(){
-    var name=$('#name').val();
-    const date=new Date(app.timer*1000).toString();
-    const time=date.split(" ")[4].substring(3,8);
-    var data=JSON.parse(localStorage.getItem('ranking'));
+    var name=$('#name').val(),
+        data=JSON.parse(localStorage.getItem('bxh'));
     data=(data)?data:[];
-    data.push({name:name, time:app.timer, star:app.star});
-    localStorage.setItem('ranking',JSON.stringify(data));
-    var rar=JSON.parse(localStorage.ranking);
+    data.push({name:name, time:app.timer, Stars:app.star});
+    localStorage.setItem('bxh', JSON.stringify(data));
+    var rar=JSON.parse(localStorage.bxh);
 
     rar.sort(function(a,b){
-        a.star=parseInt(a.star);
-        b.star=parseInt(b.star);
         a.time=parseInt(a.time);
         b.time=parseInt(b.time);
+        a.Stars=parseInt(a.Stars);
+        b.Stars=parseInt(b.Stars);
 
-        if(a.star > b.star) return -1;
-        else if(a.star <b.star) return 1;
+        if(a.Stars<b.Stars) return 1;
+        else if(a.time>b.Stars) return -1;
         else return (a.time - b.time);
     })
-    var rank=1,step=0,last=0;
+    var rank=1, step=0, last=0;
     rar.forEach(it=>{
-        if(step !==0 && !(last.star==it.star && last.time==it.time)){
-            rank+=step;
-            step=1;
-        }else{
-            step++;
-        }
-        it.rank=rank;
-        last=it;
+            if(step !==0 && !(last.Stars==it.Stars && last.time==it.time)){
+                rank+=step;
+                step=1;
+            }else{
+                step++;
+            }
+            it.rank=rank;
+            last=it;
     })
-
     rar.forEach(rank=>{
+        const date=new Date(rank.time*1000).toString();
+        const tg=date.split(" ")[4].substring(3,8);
         const row=$(`<tr>
             <td>${rank.rank}</td>
             <td>${rank.name}</td>
-            <td>${time}</td>
-            <td>${rank.star}</td>
-            </tr>`);
+            <td>${tg}</td>
+            <td>${rank.Stars}</td>
+        </tr>`)
         $('#ranking table').append(row);
     })
     $('#gameover').dialog('close');
