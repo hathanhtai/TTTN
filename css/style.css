@@ -17,7 +17,7 @@ body,.dialog{
     left: 50%;
     transform: translate(-50%,-50%);
     opacity: 0.25;
-    background-color: #29ffff;
+    background: url('../images/bg.png') no-repeat;
 }
 #game{
     position: relative;
@@ -25,9 +25,6 @@ body,.dialog{
     height: 768px;
     overflow:  hidden;
     margin:  auto;
-    background: #41aaff;
-    background-size: 200px 130px;
-    
 }
 #nav{
     position: fixed;
