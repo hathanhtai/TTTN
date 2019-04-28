@@ -163,12 +163,14 @@ function updateGame(){
             if(s>30) e.css({left: '-=5.5'});
         })
         
-        $('.fuel,.star').each(function(){
+        $('.fuel, .star').each(function(){
             var e=$(this);
-            if(e.position().top > app.H){
-                e.remove();
-            }
-            else e.css({top: '+=3'});
+            if(e.position().left <1000){
+                if(e.position().top > app.H){
+                    e.remove();
+                }
+                else e.css({top: '+=3.5'});
+            } else e.remove();
         })
         // kiểm tra va chạm các đối tượng với máy bay
         $('.bird,.bird2,.bird3,.cloud,.star,.fuel').each(function(){
