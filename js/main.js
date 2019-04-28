@@ -296,7 +296,7 @@ $(document).ready(function(){
         autoOpen:false,
         closeOnEscape:false,
         modal:true,
-        width:500,
+        width:700,
         show:{
             effect:'show',
             duration:1000
@@ -406,7 +406,7 @@ $('#continue').click(function(){
 
         if(a.Stars<b.Stars) return 1;
         else if(a.time>b.Stars) return -1;
-        else return (a.time - b.time);
+            else return (a.time - b.time);
     })
     var rank=1, step=0, last=0;
     rar.forEach(it=>{
@@ -438,7 +438,7 @@ $('#continue').click(function(){
     $('#ranking button').click(function(){
         location.reload();
         $('#wrapper').css({
-            opacity:0.25
+            opacity:0.15
         });
     })
 })

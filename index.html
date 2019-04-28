@@ -20,15 +20,16 @@
         <div id="txt">
             <p style="height: 36px">
                 <img src="images/fuel-512.png" alt="" id="img-fuel">
-                <span id="fuel-count"></span>
+                <meter value="10" id="meter" max="30" min="0"></meter>
+                <span id="fuel-count">00</span>
             </p>
             <p id="ptime">
                 <img src="images/time.png" alt="">
-                <span id="time-count"></span>
+                <span id="time-count">00:00</span>
             </p>
             <p>
                 <img src="images/star.png" alt="">
-                <span id="star-count"></span>
+                <span id="star-count">0</span>
             </p>
             
         </div>
@@ -75,8 +76,7 @@
     </form>
 </div>
 <div id="ranking" class="dialog" title="Ranking table" hidden>
-    <div id="logo-rank"></div>
-    <table width="400" border="1px" style="text-align: center" id="bxh">
+    <table width="650" border="1px" style="text-align: center" id="bxh">
         <tr>
             <th>Id</th>
             <th>Name</th>

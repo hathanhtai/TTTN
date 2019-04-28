@@ -16,8 +16,7 @@ body,.dialog{
     top: 50%;
     left: 50%;
     transform: translate(-50%,-50%);
-    opacity: 0.25;
-    background: url('../images/bg.png') no-repeat;
+    opacity: 0.15;
 }
 #game{
     position: relative;
@@ -25,6 +24,7 @@ body,.dialog{
     height: 768px;
     overflow:  hidden;
     margin:  auto;
+    background: url('../images/bg.png') no-repeat;
 }
 #nav{
     position: fixed;
@@ -74,6 +74,11 @@ body,.dialog{
     color: #ffff;   
     font-size: 20px;
 }
+meter{
+    position: absolute;
+    top: 10px;
+    left: 35px;
+}
 #ptime {
     margin-top: 3px;
 }
@@ -101,15 +106,6 @@ body,.dialog{
     background-size: contain;
     left: 2%;
     top:85% ;
-}
-#logo-rank{
-    position: relative;
-    width: 120px;
-    height: 80px;
-    background: url('../logo/logo-01.png');
-    background-size: contain;
-    left: 40%;
-    top: 0;
 }
 button,.ripple{
     position: relative;
@@ -181,16 +177,25 @@ button,.ripple{
     background-repeat: no-repeat;
 }
 .main{
-    background-image: url('../images/airplane.png');
-    width: 125px;
-    height: 60px;
+    background-image: url('../images/air1.png');
+    width: 143px;
+    height: 90px;
     top: 300px;
     z-index: 999;
+    animation: air 0.2s infinite;
 }
 .stop{
     animation-play-state: paused!important;
 }
 
+@keyframes air{
+    0%{
+        background-image: url("../images/air1.png");
+    }
+    100%{
+        background-image: url("../images/air2.png");
+    }
+}
 @keyframes bird-fly{
     0%{
         background-image: url("../images/Bird/bird1.png");
@@ -272,7 +277,7 @@ button,.ripple{
 .dialog{
     position: absolute;
     animation: dialog 3s;
-    font-size: 24px;
+    font-size: 26px;
 }
 .dialog button{
     animation: btn 4s;
@@ -300,10 +305,12 @@ button,.ripple{
     display: none!important;
 }
 .ui-dialog .ui-dialog-titlebar{
-    background: yellow;
+    background: none;
     color: red;
-    font-size: 30px;
+    padding: 0 !important;
+    font-size: 36px;
     text-align: center;
+    border: none;
 }
 .dialog{
     border: none;
