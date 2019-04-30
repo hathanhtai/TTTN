@@ -240,12 +240,12 @@ function StopSound(name){
 }
 // hàm bắt đầu game
 function PlayGame(){
-    $('.main,.bird,.bird2,.bird3,.planets,.planets2,.cloud,.star,.fuel,.bullet,.bullet-bird').removeClass('stop');
+    $('.main,.bird,.bird2,.bird3,.cloud,.star,.fuel').removeClass('stop');
     PlaySound('bg');
 }
 // hàm dừng game
 function StopGame(){
-    $('.main,.bird,.bird2,.bird3,.planets,.planets2,.cloud,.star,.fuel,.bullet,.bullet-bird').addClass('stop');
+    $('.main,.bird,.bird2,.bird3,.cloud,.star,.fuel').addClass('stop');
     StopSound('bg');
 }
 // hàm bắt đầu tính thời gian
